@@ -1,0 +1,28 @@
+{% extends "base1.html" %}
+
+{% block Title %} }{{ post.Title }} {% endblock Title %}
+{% block OverlayTitle %}{{ post.Title }} {% endblock OverlayTitle %}
+{% block OverlayImage %} {{ post.BlogImage.url }} {% endblock OverlayImage %} 
+
+{% block content %}
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p> {{ post.Post | safe }} </p>
+
+          {% if post.Author.username == user.username %}
+          <hr>
+          <a href="\delete\{{ post.id }}\{{ post.BlogSlug }}\"><button class="btn btn-danger lg"> Delete </button></a>
+          <a href="\update\{{ post.id }}\{{ post.BlogSlug }}\"><button class="btn btn-info lg"> Update </button></a>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+{% endblock content %}
